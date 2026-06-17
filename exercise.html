@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Exercise Library</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; background: #f5f5f5; }
+    h1 { color: #2a7a5a; }
+
+    input, select { padding: 8px; margin: 5px; font-size: 14px; }
+
+    .grid { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 16px; }
+
+    .card { background: white; border: 1px solid #ccc; border-radius: 8px; padding: 16px; width: 220px; }
+    .card h3 { margin: 0 0 6px; font-size: 15px; }
+    .card p  { margin: 0 0 8px; font-size: 13px; color: #555; }
+    .card button { padding: 6px 12px; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+<h1>Exercise Library</h1>
+
+<input type="text" id="search" placeholder="Search..." oninput="render()" />
+<select id="filter" onchange="render()">
+  <option value="all">All categories</option>
+  <option value="back pain">Back pain</option>
+  <option value="knee pain">Knee pain</option>
+  <option value="stretching">Stretching</option>
+  <option value="muscle strength">Muscle strength</option>
+</select>
+
+<div class="grid" id="grid"></div>
+
+<script src="exercises.js"></script>
+<script src="plan.js"></script>
+<script>
+  function render() {
+    const query = document.getElementById("search").value.toLowerCase();
+    const cat   = document.getElementById("filter").value;
+
+    let list = exercises;
+    if (cat !== "all"){
+      list = list.filter(e => e.category === cat);
+    }
+
+    if (query){
+      list = list.filter(e => e.name.toLowerCase().includes(query));
+    };
+
+    const grid = document.getElementById("grid");
+    grid.innerHTML = "";
+
+    list.forEach(ex => {
+      grid.innerHTML += `
+        <div class="card">
+          <h3>${ex.name}</h3>
+          <p>${ex.category} · ${ex.difficulty}</p>
+          <p>${ex.reps} reps × ${ex.sets} sets</p>
+          <button onclick="addToPlan(${ex.id})">Add to My Plan</button>
+          <button onclick="openModal(${ex.id})">View Plan</button>
+        </div>`;
+    });
+  }
+
+  render();
+</script>
+
+<!--Exercise View not working properly-->
+<div id="overlay" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5);">
+  <div style="background:white; margin:60px auto; padding:24px; max-width:420px; border-radius:8px;">
+    <h2 id="m-name"></h2>
+    <p id="m-category"></p>
+    <p id="m-desc"></p>
+    <ol id="m-steps"></ol>
+    <button onclick="document.getElementById('overlay').style.display='none'">Close</button>
+  </div>
+</div>
+<script>
+
+  function openModal(id) {
+    const ex = exercises.find(e => e.id === id);
+
+    document.getElementById("m-name").textContent = ex.name;
+    document.getElementById("m-category").textContent = ex.category + " · " + ex.difficulty;
+    document.getElementById("m-desc").textContent = ex.description;
+    document.getElementById("m-steps").innerHTML = ex.steps.map(s => "<li>" + s + "</li>").join("");
+
+    document.getElementById("overlay").style.display = "block";
+  }
+</script>
+</body>
+</html>
