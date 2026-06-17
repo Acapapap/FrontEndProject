@@ -66,13 +66,13 @@
   render();
 </script>
 
-<!--Exercise View not working properly-->
+<!--Exercise View-->
 <div id="overlay" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5);">
   <div style="background:white; margin:60px auto; padding:24px; max-width:420px; border-radius:8px;">
-    <h2 id="m-name"></h2>
-    <p id="m-category"></p>
-    <p id="m-desc"></p>
-    <ol id="m-steps"></ol>
+    <h2 id="ex-name"></h2>
+    <p id="ex-category"></p>
+    <p id="ex-desc"></p>
+    <ol id="ex-steps"></ol>
     <button onclick="document.getElementById('overlay').style.display='none'">Close</button>
   </div>
 </div>
@@ -81,10 +81,10 @@
   function openModal(id) {
     const ex = exercises.find(e => e.id === id);
 
-    document.getElementById("m-name").textContent = ex.name;
-    document.getElementById("m-category").textContent = ex.category + " · " + ex.difficulty;
-    document.getElementById("m-desc").textContent = ex.description;
-    document.getElementById("m-steps").innerHTML = ex.steps.map(s => "<li>" + s + "</li>").join("");
+    document.getElementById("ex-name").textContent = ex.name;
+    document.getElementById("ex-category").textContent = "Category: " + ex.category + " | " + "Dificulty: " + ex.difficulty;
+    document.getElementById("ex-desc").textContent = ex.description;
+    document.getElementById("ex-steps").innerHTML = ex.steps.map(s => "<li>" + s + "</li>").join("");
 
     document.getElementById("overlay").style.display = "block";
   }
