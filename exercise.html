@@ -2,416 +2,92 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Exercise Library</title>
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: sans-serif; padding: 20px; background: #f5f5f5; }
+    h1 { color: #2a7a5a; }
 
-    body {
-      font-family: sans-serif;
-      background: #f5f7fa;
-      color: #2d2d2d;
-    }
+    input, select { padding: 8px; margin: 5px; font-size: 14px; }
 
-    /* ── NAV ── */
-    nav {
-      background: #2a7a5a;
-      color: #fff;
-      padding: 14px 24px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    nav h1 { font-size: 18px; font-weight: 600; }
-    nav span { font-size: 13px; opacity: 0.75; }
+    .grid { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 16px; }
 
-    /* ── CONTROLS ── */
-    .controls {
-      padding: 20px 24px 0;
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-    .controls input,
-    .controls select {
-      padding: 9px 13px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 14px;
-      background: #fff;
-      outline: none;
-    }
-    .controls input { flex: 1; min-width: 180px; }
-    .controls input:focus,
-    .controls select:focus { border-color: #2a7a5a; }
-
-    /* ── GRID ── */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 16px;
-      padding: 20px 24px;
-    }
-
-    /* ── CARD ── */
-    .card {
-      background: #fff;
-      border-radius: 10px;
-      border: 1px solid #e2e8f0;
-      overflow: hidden;
-      cursor: pointer;
-      transition: box-shadow 0.2s, transform 0.2s;
-    }
-    .card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.10); transform: translateY(-2px); }
-    .card.done { opacity: 0.55; }
-
-    .card-img {
-      width: 100%;
-      height: 140px;
-      background: #d8ede5;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 40px;
-    }
-    .card-body { padding: 14px; }
-    .card-body h3 { font-size: 15px; margin-bottom: 4px; }
-    .card-body p  { font-size: 12px; color: #666; margin-bottom: 10px; }
-
-    .badge {
-      display: inline-block;
-      font-size: 11px;
-      padding: 2px 8px;
-      border-radius: 20px;
-      font-weight: 600;
-      text-transform: capitalize;
-      margin-right: 4px;
-    }
-    .badge-back-pain      { background: #fde8e8; color: #9b1c1c; }
-    .badge-knee-pain      { background: #fef3c7; color: #78350f; }
-    .badge-stretching     { background: #dbeafe; color: #1e40af; }
-    .badge-muscle-strength{ background: #d1fae5; color: #065f46; }
-    .badge-beginner       { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
-    .badge-intermediate   { background: #fffbeb; color: #92400e; border: 1px solid #fde68a; }
-
-    .card-footer {
-      padding: 10px 14px;
-      border-top: 1px solid #f0f0f0;
-      display: flex;
-      justify-content: space-between;
-      font-size: 12px;
-      color: #666;
-    }
-
-    /* ── EMPTY STATE ── */
-    .empty {
-      grid-column: 1 / -1;
-      text-align: center;
-      padding: 60px 0;
-      color: #999;
-    }
-    .empty p { margin-top: 8px; font-size: 14px; }
-
-    /* ── MODAL OVERLAY ── */
-    .overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.45);
-      z-index: 100;
-      align-items: center;
-      justify-content: center;
-    }
-    .overlay.open { display: flex; }
-
-    .modal {
-      background: #fff;
-      border-radius: 12px;
-      width: 90%;
-      max-width: 480px;
-      max-height: 90vh;
-      overflow-y: auto;
-      padding: 24px;
-      position: relative;
-    }
-    .modal-close {
-      position: absolute;
-      top: 14px; right: 16px;
-      background: none;
-      border: none;
-      font-size: 22px;
-      cursor: pointer;
-      color: #666;
-    }
-    .modal h2 { font-size: 18px; margin-bottom: 6px; }
-    .modal .modal-meta { font-size: 13px; color: #666; margin-bottom: 14px; }
-    .modal .modal-desc { font-size: 14px; margin-bottom: 16px; line-height: 1.6; }
-
-    .steps-list { padding-left: 20px; margin-bottom: 20px; }
-    .steps-list li { font-size: 13px; margin-bottom: 8px; line-height: 1.5; }
-
-    /* ── TIMER ── */
-    .timer-box {
-      background: #f0fdf4;
-      border: 1px solid #bbf7d0;
-      border-radius: 8px;
-      padding: 16px;
-      text-align: center;
-      margin-bottom: 16px;
-    }
-    .timer-box .timer-display {
-      font-size: 36px;
-      font-weight: 700;
-      color: #065f46;
-      letter-spacing: 2px;
-    }
-    .timer-box .timer-label {
-      font-size: 12px;
-      color: #6b7280;
-      margin-bottom: 12px;
-    }
-    .timer-buttons { display: flex; gap: 8px; justify-content: center; }
-    .btn {
-      padding: 8px 18px;
-      border: none;
-      border-radius: 6px;
-      font-size: 13px;
-      cursor: pointer;
-      font-weight: 600;
-    }
-    .btn-green  { background: #2a7a5a; color: #fff; }
-    .btn-gray   { background: #e5e7eb; color: #374151; }
-    .btn-done   { background: #059669; color: #fff; width: 100%; padding: 11px; font-size: 14px; border-radius: 8px; border: none; cursor: pointer; font-weight: 600; }
-    .btn-done:disabled { background: #6ee7b7; cursor: not-allowed; }
-
-    /* ── PROGRESS BAR ── */
-    .progress-bar-wrap {
-      padding: 0 24px 12px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .progress-bar-wrap span { font-size: 13px; color: #555; white-space: nowrap; }
-    .progress-bar-bg {
-      flex: 1;
-      height: 8px;
-      background: #e2e8f0;
-      border-radius: 99px;
-      overflow: hidden;
-    }
-    .progress-bar-fill {
-      height: 100%;
-      background: #2a7a5a;
-      border-radius: 99px;
-      transition: width 0.4s;
-    }
+    .card { background: white; border: 1px solid #ccc; border-radius: 8px; padding: 16px; width: 220px; }
+    .card h3 { margin: 0 0 6px; font-size: 15px; }
+    .card p  { margin: 0 0 8px; font-size: 13px; color: #555; }
+    .card button { padding: 6px 12px; cursor: pointer; }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <h1>💪 Exercise Library</h1>
-  <span>Member 2 — browse, filter &amp; track</span>
-</nav>
+<h1>Exercise Library</h1>
 
-<!-- CONTROLS -->
-<div class="controls">
-  <input type="text" id="search" placeholder="Search exercises…" oninput="render()" />
-  <select id="filter" onchange="render()">
-    <option value="all">All categories</option>
-    <option value="back pain">Back pain</option>
-    <option value="knee pain">Knee pain</option>
-    <option value="stretching">Stretching</option>
-    <option value="muscle strength">Muscle strength</option>
-  </select>
-</div>
+<input type="text" id="search" placeholder="Search..." oninput="render()" />
+<select id="filter" onchange="render()">
+  <option value="all">All categories</option>
+  <option value="back pain">Back pain</option>
+  <option value="knee pain">Knee pain</option>
+  <option value="stretching">Stretching</option>
+  <option value="muscle strength">Muscle strength</option>
+</select>
 
-<!-- PROGRESS -->
-<div class="progress-bar-wrap">
-  <span id="progress-label">0 / 12 done</span>
-  <div class="progress-bar-bg">
-    <div class="progress-bar-fill" id="progress-fill" style="width:0%"></div>
-  </div>
-</div>
-
-<!-- CARD GRID -->
 <div class="grid" id="grid"></div>
 
-<!-- MODAL -->
-<div class="overlay" id="overlay" onclick="closeModal(event)">
-  <div class="modal" id="modal">
-    <button class="modal-close" onclick="closeModalBtn()">✕</button>
-    <h2 id="m-name"></h2>
-    <div class="modal-meta" id="m-meta"></div>
-    <p class="modal-desc" id="m-desc"></p>
-    <ol class="steps-list" id="m-steps"></ol>
-
-    <!-- Timer -->
-    <div class="timer-box">
-      <div class="timer-label" id="timer-label">Get ready</div>
-      <div class="timer-display" id="timer-display">00:00</div>
-      <div class="timer-buttons" style="margin-top:12px">
-        <button class="btn btn-green" onclick="startTimer()">Start</button>
-        <button class="btn btn-gray"  onclick="pauseTimer()">Pause</button>
-        <button class="btn btn-gray"  onclick="resetTimer()">Reset</button>
-      </div>
-    </div>
-
-    <button class="btn-done" id="done-btn" onclick="markDone()">✔ Mark as completed</button>
-  </div>
-</div>
-
-<!-- exercises.js must be in the same folder -->
 <script src="exercises.js"></script>
+<script src="plan.js"></script>
 <script>
-  // ── emoji map for placeholder images ──
-  const emojiMap = {
-    "back pain":       "🧘",
-    "knee pain":       "🦵",
-    "stretching":      "🤸",
-    "muscle strength": "💪"
-  };
-
-  let currentId = null;
-  let timerInterval = null;
-  let timerSeconds = 0;
-  let timerRunning = false;
-
-  // ── RENDER ──
   function render() {
-    const query  = document.getElementById("search").value.toLowerCase();
-    const cat    = document.getElementById("filter").value;
+    const query = document.getElementById("search").value.toLowerCase();
+    const cat   = document.getElementById("filter").value;
 
     let list = exercises;
-    if (cat !== "all") list = list.filter(e => e.category === cat);
-    if (query)         list = list.filter(e =>
-      e.name.toLowerCase().includes(query) ||
-      e.description.toLowerCase().includes(query)
-    );
+    if (cat !== "all"){
+      list = list.filter(e => e.category === cat);
+    }
+
+    if (query){
+      list = list.filter(e => e.name.toLowerCase().includes(query));
+    };
 
     const grid = document.getElementById("grid");
     grid.innerHTML = "";
 
-    if (list.length === 0) {
-      grid.innerHTML = `<div class="empty"><div style="font-size:36px">🔍</div><p>No exercises found.</p></div>`;
-      return;
-    }
-
     list.forEach(ex => {
-      const catKey = ex.category.replace(/\s+/g, "-");
       grid.innerHTML += `
-        <div class="card ${ex.completed ? "done" : ""}" onclick="openModal(${ex.id})">
-          <div class="card-img">${emojiMap[ex.category] || "🏋️"}</div>
-          <div class="card-body">
-            <h3>${ex.completed ? "✔ " : ""}${ex.name}</h3>
-            <p>${ex.description}</p>
-            <span class="badge badge-${catKey}">${ex.category}</span>
-            <span class="badge badge-${ex.difficulty}">${ex.difficulty}</span>
-          </div>
-          <div class="card-footer">
-            <span>⏱ ${ex.duration}s per rep</span>
-            <span>${ex.reps} reps × ${ex.sets} sets</span>
-          </div>
+        <div class="card">
+          <h3>${ex.name}</h3>
+          <p>${ex.category} · ${ex.difficulty}</p>
+          <p>${ex.reps} reps × ${ex.sets} sets</p>
+          <button onclick="addToPlan(${ex.id})">Add to My Plan</button>
+          <button onclick="openModal(${ex.id})">View Plan</button>
         </div>`;
     });
-
-    updateProgress();
   }
 
-  // ── PROGRESS ──
-  function updateProgress() {
-    const done  = exercises.filter(e => e.completed).length;
-    const total = exercises.length;
-    document.getElementById("progress-label").textContent = `${done} / ${total} done`;
-    document.getElementById("progress-fill").style.width = `${(done / total) * 100}%`;
-  }
+  render();
+</script>
 
-  // ── MODAL ──
+<!--Exercise View not working properly-->
+<div id="overlay" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5);">
+  <div style="background:white; margin:60px auto; padding:24px; max-width:420px; border-radius:8px;">
+    <h2 id="m-name"></h2>
+    <p id="m-category"></p>
+    <p id="m-desc"></p>
+    <ol id="m-steps"></ol>
+    <button onclick="document.getElementById('overlay').style.display='none'">Close</button>
+  </div>
+</div>
+<script>
+
   function openModal(id) {
     const ex = exercises.find(e => e.id === id);
-    if (!ex) return;
-    currentId = id;
 
     document.getElementById("m-name").textContent = ex.name;
-    document.getElementById("m-meta").textContent =
-      `${ex.category} · ${ex.difficulty} · ${ex.reps} reps × ${ex.sets} sets`;
+    document.getElementById("m-category").textContent = ex.category + " · " + ex.difficulty;
     document.getElementById("m-desc").textContent = ex.description;
+    document.getElementById("m-steps").innerHTML = ex.steps.map(s => "<li>" + s + "</li>").join("");
 
-    const stepsList = document.getElementById("m-steps");
-    stepsList.innerHTML = ex.steps.map(s => `<li>${s}</li>`).join("");
-
-    const doneBtn = document.getElementById("done-btn");
-    doneBtn.disabled = ex.completed;
-    doneBtn.textContent = ex.completed ? "✔ Already completed" : "✔ Mark as completed";
-
-    resetTimer();
-    timerSeconds = ex.duration;
-    updateTimerDisplay();
-    document.getElementById("timer-label").textContent =
-      `${ex.duration}s per rep · ${ex.reps} reps`;
-
-    document.getElementById("overlay").classList.add("open");
+    document.getElementById("overlay").style.display = "block";
   }
-
-  function closeModal(e) {
-    if (e.target === document.getElementById("overlay")) closeModalBtn();
-  }
-  function closeModalBtn() {
-    document.getElementById("overlay").classList.remove("open");
-    resetTimer();
-    currentId = null;
-  }
-
-  // ── TIMER ──
-  function updateTimerDisplay() {
-    const m = String(Math.floor(timerSeconds / 60)).padStart(2, "0");
-    const s = String(timerSeconds % 60).padStart(2, "0");
-    document.getElementById("timer-display").textContent = `${m}:${s}`;
-  }
-
-  function startTimer() {
-    if (timerRunning) return;
-    timerRunning = true;
-    timerInterval = setInterval(() => {
-      if (timerSeconds <= 0) {
-        clearInterval(timerInterval);
-        timerRunning = false;
-        document.getElementById("timer-label").textContent = "⏰ Time's up! Rest, then go again.";
-        return;
-      }
-      timerSeconds--;
-      updateTimerDisplay();
-    }, 1000);
-  }
-
-  function pauseTimer() {
-    clearInterval(timerInterval);
-    timerRunning = false;
-  }
-
-  function resetTimer() {
-    clearInterval(timerInterval);
-    timerRunning = false;
-    const ex = exercises.find(e => e.id === currentId);
-    timerSeconds = ex ? ex.duration : 0;
-    updateTimerDisplay();
-    if (ex) document.getElementById("timer-label").textContent =
-      `${ex.duration}s per rep · ${ex.reps} reps`;
-  }
-
-  // ── MARK DONE ──
-  function markDone() {
-    if (!currentId) return;
-    markCompleted(currentId);
-    const doneBtn = document.getElementById("done-btn");
-    doneBtn.disabled = true;
-    doneBtn.textContent = "✔ Already completed";
-    render();
-  }
-
-  // ── INIT ──
-  render();
 </script>
 </body>
 </html>
