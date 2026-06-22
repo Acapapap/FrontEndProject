@@ -2,121 +2,169 @@
 <html>
 
 <head>
+    <title>Fitness & Physiotherapy Exercise Planner</title>
 
-<title>Fitness & Physiotherapy Exercise Planner</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
 
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
 
-<style>
+        nav {
+            background-color: #333;
+            padding: 15px;
+            text-align: center;
+        }
 
-body{
-font-family:Arial;
-}
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 15px;
+            font-weight: bold;
+        }
 
-section{
-padding:50px;
-}
+        nav a:hover {
+            color: yellow;
+        }
 
-.card{
-margin-bottom:20px;
-}
+        nav button {
+            background-color: yellow;
+            color: black;
+            border: none;
+            padding: 8px 12px;
+            font-weight: bold;
+            cursor: pointer;
+        }
 
-.dark{
-background-color:black;
-color:white;
-}
+        .hero {
+            text-align: center;
+            padding: 40px;
+        }
 
-.colorblind{
-background-color:white;
-color:black;
-border:3px solid black;
-}
+        .hero img {
+            width: 400px;
+            max-width: 100%;
+            border-radius: 10px;
+        }
 
-</style>
+        .content {
+            text-align: center;
+            padding: 20px;
+        }
 
+        .card {
+            background-color: white;
+            width: 250px;
+            display: inline-block;
+            margin: 15px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 30px;
+        }
+
+        .colorblind {
+            background-color: white;
+            color: black;
+        }
+
+        .colorblind header {
+            background-color: #003366;
+        }
+
+        .colorblind nav {
+            background-color: black;
+        }
+
+        .colorblind .card {
+            border: 3px solid black;
+        }
+
+        .colorblind footer {
+            background-color: #003366;
+        }
+    </style>
 </head>
 
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-success">
+    <header>
+        <h1>Fitness & Physiotherapy Exercise Planner</h1>
+        <p>Stay Active, Recover Better, Live Healthier</p>
+    </header>
 
-<div class="container">
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="exercise.html">Exercises</a>
+        <a href="progress.html">Progress</a>
+        <a href="about.html">About Us</a>
 
-<a class="navbar-brand" href="#">
-Fitness Planner
-</a>
+        <button id="cbBtn" onclick="toggleColorBlind()">Colour Blind Mode</button>
+    </nav>
 
-<ul class="navbar-nav ms-auto">
+    <div class="hero">
+        <img src="fitness.jpg" alt="Fitness Exercise">
 
-<li class="nav-item">
-<a class="nav-link" href="#home">Home</a>
-</li>
+        <h2>Welcome to Our Exercise Planner</h2>
 
-<li class="nav-item">
-<a class="nav-link" href="#introduction">Introduction</a>
-</li>
+        <p>
+            This website helps users discover fitness and physiotherapy exercises,
+            track simple progress, and practise healthy activities safely.
+        </p>
+    </div>
 
-<li class="nav-item">
-<a class="nav-link" href="#exercise">Exercises</a>
-</li>
+    <div class="content">
 
-<li class="nav-item">
-<a class="nav-link" href="#timer">Timer</a>
-</li>
+        <div class="card">
+            <h3>Back Pain</h3>
+            <p>Exercises for reducing back pain and improving posture.</p>
+        </div>
 
-<li class="nav-item">
-<a class="nav-link" href="#progress">Progress</a>
-</li>
+        <div class="card">
+            <h3>Knee Pain</h3>
+            <p>Recommended stretches and strengthening exercises.</p>
+        </div>
 
-<li class="nav-item">
-<a class="nav-link" href="#theme">Theme</a>
-</li>
+        <div class="card">
+            <h3>Muscle Strength</h3>
+            <p>Build strength safely with guided routines.</p>
+        </div>
 
-<li class="nav-item">
-<a class="nav-link" href="#about">About</a>
-</li>
+    </div>
 
-</ul>
+    <footer>
+        <p>© 2026 Group 3 | Fitness & Physiotherapy Exercise Planner</p>
+    </footer>
 
-</div>
+    <script>
+        function toggleColorBlind() {
+            document.body.classList.toggle("colorblind");
 
-</nav>
+            var btn = document.getElementById("cbBtn");
 
-<section id="home">
+            if (document.body.classList.contains("colorblind")) {
+                btn.innerHTML = "Normal Mode";
+            } else {
+                btn.innerHTML = "Colour Blind Mode";
+            }
+        }
+    </script>
 
-<div class="container">
+</body>
 
-<h1>Fitness & Physiotherapy Exercise Planner</h1>
-
-<p>
-Welcome to our exercise planner system.
-This system helps users perform physiotherapy and fitness exercises.
-</p>
-
-</div>
-
-</section>
-
-<section id="introduction">
-
-<div class="container">
-
-<h2>Introduction</h2>
-
-<p>
-Physiotherapy helps people recover from injuries and improve body movement through guided exercises.
-</p>
-
-<h4>Benefits</h4>
-
-<ul>
-
-<li>Reduce pain</li>
-<li>Improve flexibility</li>
-<li>Increase muscle strength</li>
-<li>Improve mobility</li>
-
-</ul>
-
-</div>
-
-</section>
+</html>
