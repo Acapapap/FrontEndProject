@@ -2,26 +2,24 @@
 <html>
 
 <head>
-    <title>FitPhysio Exercise Planner</title>
+    <title>Fitness & Physiotherapy Exercise Planner</title>
 
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: Arial;
             margin: 0;
             background-color: #f4f4f4;
         }
 
-        /* Header */
         header {
-            background-color: #000000;
+            background-color: #4CAF50;
             color: white;
             text-align: center;
             padding: 25px;
         }
 
-        /* Navigation */
         nav {
-            background-color: #000000;
+            background-color: #333;
             padding: 15px;
             text-align: center;
         }
@@ -44,32 +42,19 @@
             padding: 8px 12px;
             font-weight: bold;
             cursor: pointer;
-            border-radius: 5px;
         }
 
-        /* Hero Section */
         .hero {
             text-align: center;
             padding: 40px;
         }
 
         .hero img {
-            width: 450px;
+            width: 400px;
             max-width: 100%;
             border-radius: 10px;
         }
 
-        .hero h2 {
-            margin-top: 20px;
-        }
-
-        .hero p {
-            width: 70%;
-            margin: auto;
-            line-height: 1.6;
-        }
-
-        /* Content Cards */
         .content {
             text-align: center;
             padding: 20px;
@@ -77,39 +62,33 @@
 
         .card {
             background-color: white;
-            width: 280px;
+            width: 250px;
             display: inline-block;
             margin: 15px;
             padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0px 0px 10px gray;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
         }
 
-        .card h3 {
-            color: #000000;
-        }
-
-        /* Footer */
         footer {
-            background-color: #000000;
+            background-color: #333;
             color: white;
             text-align: center;
             padding: 15px;
             margin-top: 30px;
         }
 
-        /* Colour Blind Mode */
         .colorblind {
             background-color: white;
             color: black;
         }
 
         .colorblind header {
-            background-color: #1e3a8a;
+            background-color: #003366;
         }
 
         .colorblind nav {
-            background-color: #1e3a8a;
+            background-color: black;
         }
 
         .colorblind .card {
@@ -117,113 +96,77 @@
         }
 
         .colorblind footer {
-            background-color: #1e3a8a;
+            background-color: #003366;
         }
     </style>
-
 </head>
 
 <body>
 
-    <!-- Header -->
     <header>
-        <h1>FitPhysio Exercise Planner</h1>
-        <p>Your Journey Towards Better Health Starts Here</p>
+        <h1>Fitness & Physiotherapy Exercise Planner</h1>
+        <p>Stay Active, Recover Better, Live Healthier</p>
     </header>
 
-    <!-- Navigation Bar -->
     <nav>
-
         <a href="index.html">Home</a>
-
-        <a href="exercise.html">Exercise Library</a>
-
-        <a href="progress.html">My Progress</a>
-
+        <a href="exercise.html">Exercises</a>
+        <a href="progress.html">Progress</a>
         <a href="about.html">About Us</a>
 
-        <button id="cbBtn" onclick="toggleColorBlind()">
-            Colour Blind Mode
-        </button>
-
+        <button id="cbBtn" onclick="toggleColorBlind()">Colour Blind Mode</button>
     </nav>
 
-    <!-- Home Content -->
     <div class="hero">
-
         <img src="fitness.jpg" alt="Fitness Exercise">
 
-        <h2>Your Personal Fitness & Recovery Guide</h2>
+        <h2>Welcome to Our Exercise Planner</h2>
 
         <p>
-            Discover recommended physiotherapy and fitness exercises,
-            monitor your improvement, and build a healthier lifestyle
-            through safe and effective workout routines.
+            This website helps users discover fitness and physiotherapy exercises,
+            track simple progress, and practise healthy activities safely.
         </p>
-
     </div>
 
-    <!-- Categories -->
     <div class="content">
 
         <div class="card">
-            <h3>Back Pain Relief</h3>
-
-            <p>
-                Targeted exercises to reduce back pain and improve
-                flexibility and posture.
-            </p>
+            <h3>Back Pain</h3>
+            <p>Exercises for reducing back pain and improving posture.</p>
         </div>
 
         <div class="card">
-            <h3>Knee Recovery</h3>
-
-            <p>
-                Safe exercises designed to strengthen knees and
-                reduce discomfort.
-            </p>
+            <h3>Knee Pain</h3>
+            <p>Recommended stretches and strengthening exercises.</p>
         </div>
 
         <div class="card">
             <h3>Muscle Strength</h3>
-
-            <p>
-                Build and maintain muscle strength through guided
-                workouts and routines.
-            </p>
+            <p>Build strength safely with guided routines.</p>
         </div>
 
     </div>
 
-    <!-- Footer -->
     <footer>
-
-        <p>
-            © 2026 Group 3 | FitPhysio Exercise Planner
-        </p>
-
+        <p>© 2026 Group 3 | Fitness & Physiotherapy Exercise Planner</p>
     </footer>
 
-    <!-- JavaScript -->
     <script>
-
         function toggleColorBlind() {
-
             document.body.classList.toggle("colorblind");
 
             var btn = document.getElementById("cbBtn");
 
             if (document.body.classList.contains("colorblind")) {
                 btn.innerHTML = "Normal Mode";
-            }
-            else {
+            } else {
                 btn.innerHTML = "Colour Blind Mode";
             }
-
         }
-
     </script>
 
 </body>
 
 </html>
+
+change green to black colour
