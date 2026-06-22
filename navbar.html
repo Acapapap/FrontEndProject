@@ -1,21 +1,16 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-success">
   <div class="container">
-    <a class="navbar-brand" href="index.html">
-      <img src="fit.png" width="50" height="40">
+    <a class="navbar-brand fw-bold" href="index.html">
+      <img src="fit.png" width="50" height="40" alt="Logo">
       JomFitness
     </a>
 
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navMenu">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navMenu">
-      <ul class="navbar-nav ms-auto">
-
+      <ul class="navbar-nav ms-auto align-items-lg-center">
         <li class="nav-item">
           <a class="nav-link" href="index.html">Home</a>
         </li>
@@ -29,9 +24,14 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="about-us.html">About Us</a>
+          <a class="nav-link" href="about-us.html">About Us</a>
         </li>
 
+        <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+          <button class="btn btn-light" id="cbBtn" onclick="toggleColorBlind()">
+            Colour Blind Mode
+          </button>
+        </li>
       </ul>
     </div>
   </div>
