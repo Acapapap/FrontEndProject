@@ -1,58 +1,29 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>Fitness & Physiotherapy Exercise Planner</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 
     <style>
         body {
-            font-family: Arial;
-            margin: 0;
             background-color: #f4f4f4;
-        }
-
-        header {
-            background-color: #4CAF50;
-            color: white;
-            text-align: center;
-            padding: 25px;
-        }
-
-        nav {
-            background-color: #333;
-            padding: 15px;
-            text-align: center;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 15px;
-            font-weight: bold;
-        }
-
-        nav a:hover {
-            color: yellow;
-        }
-
-        nav button {
-            background-color: yellow;
-            color: black;
-            border: none;
-            padding: 8px 12px;
-            font-weight: bold;
-            cursor: pointer;
         }
 
         .hero {
             text-align: center;
-            padding: 40px;
+            padding: 40px 20px;
         }
 
         .hero img {
             width: 400px;
             max-width: 100%;
             border-radius: 10px;
+            margin-bottom: 20px;
         }
 
         .content {
@@ -60,62 +31,28 @@
             padding: 20px;
         }
 
-        .card {
+        .home-card {
             background-color: white;
             width: 250px;
             display: inline-block;
+            vertical-align: top;
             margin: 15px;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px gray;
         }
 
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 15px;
-            margin-top: 30px;
-        }
-
-        .colorblind {
-            background-color: white;
-            color: black;
-        }
-
-        .colorblind header {
-            background-color: #003366;
-        }
-
-        .colorblind nav {
-            background-color: black;
-        }
-
-        .colorblind .card {
-            border: 3px solid black;
-        }
-
-        .colorblind footer {
-            background-color: #003366;
-        }
     </style>
 </head>
 
 <body>
 
+    <div id="navbar"></div>
+
     <header>
         <h1>Fitness & Physiotherapy Exercise Planner</h1>
         <p>Stay Active, Recover Better, Live Healthier</p>
     </header>
-
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="exercise.html">Exercises</a>
-        <a href="progress.html">Progress</a>
-        <a href="about-us.html">About Us</a>
-
-        <button id="cbBtn" onclick="toggleColorBlind()">Colour Blind Mode</button>
-    </nav>
 
     <div class="hero">
         <img src="fitness.jpg" alt="Fitness Exercise">
@@ -129,44 +66,37 @@
     </div>
 
     <div class="content">
-
-        <div class="card">
+        <div class="home-card">
             <h3>Back Pain</h3>
             <p>Exercises for reducing back pain and improving posture.</p>
         </div>
 
-        <div class="card">
+        <div class="home-card">
             <h3>Knee Pain</h3>
             <p>Recommended stretches and strengthening exercises.</p>
         </div>
 
-        <div class="card">
+        <div class="home-card">
             <h3>Muscle Strength</h3>
             <p>Build strength safely with guided routines.</p>
         </div>
-
     </div>
 
     <footer>
         <p>© 2026 Group 3 | Fitness & Physiotherapy Exercise Planner</p>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="colorblind.js"></script>
+
     <script>
-        function toggleColorBlind() {
-            document.body.classList.toggle("colorblind");
-
-            var btn = document.getElementById("cbBtn");
-
-            if (document.body.classList.contains("colorblind")) {
-                btn.innerHTML = "Normal Mode";
-            } else {
-                btn.innerHTML = "Colour Blind Mode";
-            }
-        }
+        fetch("navbar.html")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("navbar").innerHTML = data;
+                applyColorBlindMode();
+            });
     </script>
 
 </body>
-
 </html>
-
-change green to black colour

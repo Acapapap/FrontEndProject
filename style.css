@@ -1,0 +1,126 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 35px 20px;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 30px;
+}
+
+/* Navbar */
+.navbar-brand {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.nav-link {
+    font-size: 16px;
+}
+
+#cbBtn {
+    font-size: 14px;
+}
+
+/* Color Blind Mode */
+.colorblind {
+    background-color: white;
+    color: black;
+}
+
+.colorblind .card {
+    background-color: white;
+    border: 3px solid black;
+    color: black;
+}
+
+.colorblind input,
+.colorblind select {
+    background-color: white;
+    color: black;
+    border: 2px solid black;
+}
+
+.colorblind nav,
+.colorblind header,
+.colorblind footer {
+    background-color: #003366 !important;
+}
+
+.colorblind .btn-green {
+    background-color: black;
+    color: white;
+}
+
+.colorblind #cbBtn {
+    background-color: yellow !important;
+    color: black !important;
+    border: 2px solid black;
+}
+
+.progress {
+    height: 25px;
+    border-radius: 20px;
+}
+
+.progress-bar {
+    font-weight: bold;
+}
+
+#totalExercise,
+#completedExercise,
+#remainingExercise {
+    color: #198754;
+    font-weight: bold;
+}
+
+#progressMessage {
+    color: #198754;
+    font-size: 16px;
+}
+
+@media print {
+
+    #navbar,
+    footer,
+    button {
+        display: none;
+    }
+
+    header {
+        background-color: white !important;
+        color: black !important;
+        border-bottom: 2px solid black;
+    }
+
+    .card {
+        box-shadow: none !important;
+        border: 1px solid #999;
+    }
+
+    body {
+        background-color: white;
+    }
+}
+
