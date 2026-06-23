@@ -79,3 +79,48 @@ footer {
     border: 2px solid black;
 }
 
+.progress {
+    height: 25px;
+    border-radius: 20px;
+}
+
+.progress-bar {
+    font-weight: bold;
+}
+
+#totalExercise,
+#completedExercise,
+#remainingExercise {
+    color: #198754;
+    font-weight: bold;
+}
+
+#progressMessage {
+    color: #198754;
+    font-size: 16px;
+}
+
+@media print {
+
+    #navbar,
+    footer,
+    button {
+        display: none;
+    }
+
+    header {
+        background-color: white !important;
+        color: black !important;
+        border-bottom: 2px solid black;
+    }
+
+    .card {
+        box-shadow: none !important;
+        border: 1px solid #999;
+    }
+
+    body {
+        background-color: white;
+    }
+}
+
