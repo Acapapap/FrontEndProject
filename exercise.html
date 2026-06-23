@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,15 +15,9 @@
             background-color: #F5FFF5;
         }
 
-        .title {
-            color: #006400;
-            text-align: center;
-            margin: 30px 0px 0px 0px;
-        }
-
         .card {
             margin-bottom: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
             border: none;
         }
 
@@ -44,7 +39,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.5);
+            background: rgba(0, 0, 0, 0.5);
         }
 
         .box {
@@ -55,14 +50,6 @@
             padding: 20px;
             border-radius: 10px;
         }
-
-        .slogan {
-            color: #006400;
-            text-align: center;
-            margin: 20px 0;
-        }
-
-
     </style>
 </head>
 
@@ -71,20 +58,18 @@
     <!-- Navbar -->
     <div id="navbar"></div>
 
+    <header>
+        <h1>Exercise Library</h1>
+        <p>Stay Active, Recover Better, Live Healthier</p>
+    </header>
+
     <main>
-        <!-- Title -->
         <div class="container">
-            <h1 class="title">Exercise Library</h1>
-            <p class="slogan">Stay Active, Recover Better, Live Healthier</p>
 
             <!-- Search & Filter -->
             <div class="row mb-4">
                 <div class="col-md-8">
-                    <input
-                        type="text"
-                        id="search"
-                        class="form-control"
-                        placeholder="Search exercise..."
+                    <input type="text" id="search" class="form-control" placeholder="Search exercise..."
                         oninput="render()">
                 </div>
 
@@ -111,6 +96,10 @@
                 <p id="ex-category"></p>
 
                 <p id="ex-desc"></p>
+
+                <video id="ex-vid" width="100%" controls>
+                    Your browser does not support video.
+                </video>
 
                 <h5>Steps</h5>
                 <ol id="ex-steps"></ol>
@@ -223,10 +212,13 @@
             document.getElementById("ex-desc").textContent =
                 ex.description;
 
+            document.getElementById("ex-vid").src =
+                ex.vid;
+
             document.getElementById("ex-steps").innerHTML =
                 ex.steps
-                .map(step => "<li>" + step + "</li>")
-                .join("");
+                    .map(step => "<li>" + step + "</li>")
+                    .join("");
 
             document.getElementById("overlay").style.display =
                 "block";
@@ -236,24 +228,25 @@
     </script>
 
     <script>
-      fetch("navbar.html")
-        .then(response => response.text())
-        .then(data => {
-          document.getElementById("navbar").innerHTML = data;
+        fetch("navbar.html")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("navbar").innerHTML = data;
 
-        if (localStorage.getItem("colorBlind") === "on") {
-          document.body.classList.add("colorblind");
+                if (localStorage.getItem("colorBlind") === "on") {
+                    document.body.classList.add("colorblind");
 
-          let btn = document.getElementById("cbBtn");
-          if (btn) {
-            btn.innerHTML = "Normal Mode";
-          }
-        }
-      });
-</script>
+                    let btn = document.getElementById("cbBtn");
+                    if (btn) {
+                        btn.innerHTML = "Normal Mode";
+                    }
+                }
+            });
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     <script src="colorblind.js"></script>
 
 </body>
+
 </html>

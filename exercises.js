@@ -11,7 +11,7 @@ const exercises = [
     duration: 20,
     reps: 8,
     sets: 2,
-    image: "images/cat-cow.gif",
+    vid: "video/cat-cow.mp4",
     description: "A gentle spinal mobility exercise that relieves tension in the lower back and neck.",
     steps: [
       "Start on hands and knees with wrists below shoulders and knees below hips.",
@@ -30,7 +30,7 @@ const exercises = [
     duration: 10,
     reps: 12,
     sets: 3,
-    image: "images/pelvic-tilt.gif",
+    vid: "video/pelvic-tilt.mp4",
     description: "Strengthens the deep core muscles that support the lower back.",
     steps: [
       "Lie on your back with knees bent and feet flat on the floor.",
@@ -49,7 +49,7 @@ const exercises = [
     duration: 30,
     reps: 4,
     sets: 2,
-    image: "images/childs-pose.gif",
+    vid: "video/child-pose.mp4",
     description: "A restful stretch that gently elongates the lower back and hips.",
     steps: [
       "Kneel on the floor and sit back on your heels.",
@@ -70,7 +70,7 @@ const exercises = [
     duration: 5,
     reps: 10,
     sets: 3,
-    image: "images/knee-extension.gif",
+    vid: "video/seated-knee-extension.mp4",
     description: "Strengthens the quadriceps to reduce knee pain and improve joint stability.",
     steps: [
       "Sit upright in a sturdy chair with feet flat on the floor.",
@@ -89,7 +89,7 @@ const exercises = [
     duration: 20,
     reps: 8,
     sets: 3,
-    image: "images/wall-squat.gif",
+    vid: "video/wall-squat.mp4",
     description: "Builds quadricep and glute strength with reduced knee stress.",
     steps: [
       "Stand with your back flat against a wall, feet shoulder-width apart.",
@@ -108,7 +108,7 @@ const exercises = [
     duration: 5,
     reps: 12,
     sets: 3,
-    image: "images/straight-leg-raise.gif",
+    vid: "video/straight-leg-raise.mp4",
     description: "Strengthens the hip flexors and quads without bending the knee joint.",
     steps: [
       "Lie flat on your back with one knee bent and the other leg straight.",
@@ -129,7 +129,7 @@ const exercises = [
     duration: 30,
     reps: 2,
     sets: 2,
-    image: "images/quad-stretch.gif",
+    vid: "video/standing-quad-strecth.mp4",
     description: "Loosens tight quadriceps and improves overall leg flexibility.",
     steps: [
       "Stand near a wall or chair for balance if needed.",
@@ -148,7 +148,7 @@ const exercises = [
     duration: 30,
     reps: 3,
     sets: 1,
-    image: "images/chest-stretch.gif",
+    vid: "video/doorway-chest-stretch.mp4",
     description: "Opens the chest and shoulders, counteracting prolonged sitting posture.",
     steps: [
       "Stand in an open doorway with arms at 90 degrees on each door frame.",
@@ -167,7 +167,7 @@ const exercises = [
     duration: 30,
     reps: 2,
     sets: 2,
-    image: "images/hamstring-stretch.gif",
+    vid: "video/seated-hamstring-stretch.mp4",
     description: "Relieves tightness in the hamstrings and reduces lower back strain.",
     steps: [
       "Sit on the edge of a chair with one leg extended straight in front of you.",
@@ -188,7 +188,7 @@ const exercises = [
     duration: 5,
     reps: 12,
     sets: 3,
-    image: "images/glute-bridge.gif",
+    vid: "video/glute-bridge.mp4",
     description: "Activates the glutes and hamstrings while stabilising the lower back.",
     steps: [
       "Lie on your back with knees bent, feet flat on the floor hip-width apart.",
@@ -207,7 +207,7 @@ const exercises = [
     duration: 5,
     reps: 12,
     sets: 3,
-    image: "images/band-row.gif",
+    vid: "video/resistance-band-row.mp4",
     description: "Strengthens the upper back and improves posture.",
     steps: [
       "Sit on the floor with legs straight. Loop a resistance band around both feet.",
@@ -226,7 +226,7 @@ const exercises = [
     duration: 5,
     reps: 15,
     sets: 3,
-    image: "images/hip-abduction.gif",
+    vid: "video/side-lying-hip-abduction.mp4",
     description: "Targets the hip abductors to improve hip stability and reduce knee and back pain.",
     steps: [
       "Lie on your side with legs straight, one on top of the other.",

@@ -1,44 +1,16 @@
-
 <!DOCTYPE html>
 <html>
 
 <head>
     <title>About Us - Fitness & Physiotherapy Exercise Planner</title>
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
     <style>
         body {
             font-family: Arial;
-            margin: 0;
             background-color: #f4f4f4;
-        }
-
-        header {
-            background-color: #000000;
-            color: white;
-            text-align: center;
-            padding: 25px;
-        }
-
-        nav {
-            background-color: #000000;
-            padding: 15px;
-            text-align: center;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 15px;
-            font-weight: bold;
-        }
-
-        nav a:hover {
-            color: yellow;
-        }
-
-        .container {
-            text-align: center;
-            padding: 40px;
         }
 
         .member {
@@ -76,70 +48,80 @@
 
 <body>
 
+    <div id="navbar"></div>
+
     <header>
         <h1>About Us</h1>
         <p>Meet Our Project Team</p>
     </header>
 
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="exercise.html">Exercises</a>
-        <a href="progress.html">Progress</a>
-        <a href="about.html">About Us</a>
-    </nav>
+    <main>
 
-    <div class="container">
+        <div class="container">
 
-        <h2>Group Members</h2>
+            <h2>Group Members</h2>
 
-        <div class="member">
-            <img src="kimi.jpg" alt="Member 1">
+            <div class="member">
+                <img src="kimi.jpg" alt="Member 1">
 
-            <h3>MUHAMMAD HAKIMI BIN IBRAHIM</h3>
+                <h3>MUHAMMAD HAKIMI BIN IBRAHIM</h3>
 
-            <p><strong>Student ID:</strong> 2024243204</p>
+                <p><strong>Student ID:</strong> 2024243204</p>
 
-            <p>Main Website Structure</p>
+                <p>Main Website Structure</p>
+            </div>
+
+            <div class="member">
+                <img src="acap.jpg" alt="Member 2">
+
+                <h3>AMIRUL ASHRAF BIN ZULKARNAIN</h3>
+
+                <p><strong>Student ID:</strong> 2024208566</p>
+
+                <p>Exercise Features</p>
+            </div>
+
+            <div class="member">
+                <img src="neen.jpg" alt="Member 3">
+
+                <h3>NUR ADNEEN BINTI ZULKIFLI</h3>
+
+                <p><strong>Student ID:</strong> 2024428488</p>
+
+
+
+                <p>Progress Tracking</p>
+            </div>
+
+            <div class="member">
+                <img src="jasmin.jpg" alt="Member 4">
+
+                <h3>JASMINE HANANI BINTI AHMAD TAJUDDIN FAZIKRILHAKIM</h3>
+
+                <p><strong>Student ID:</strong> 20246618244</p>
+
+
+                <p>Accessibility Features</p>
+            </div>
+
         </div>
-
-        <div class="member">
-            <img src="acap.jpg" alt="Member 2">
-
-            <h3>AMIRUL ASHRAF BIN ZULKARNAIN</h3>
-
-            <p><strong>Student ID:</strong> 2024208566</p>
-
-            <p>Exercise Features</p>
-        </div>
-
-        <div class="member">
-            <img src="neen.jpg" alt="Member 3">
-
-            <h3>NUR ADNEEN BINTI ZULKIFLI</h3>
-
-            <p><strong>Student ID:</strong> 2024428488</p>
-
-
-
-            <p>Progress Tracking</p>
-        </div>
-
-        <div class="member">
-            <img src="jasmin.jpg" alt="Member 4">
-
-            <h3>JASMINE HANANI BINTI AHMAD TAJUDDIN FAZIKRILHAKIM</h3>
-
-            <p><strong>Student ID:</strong> 20246618244</p>
-
-
-            <p>Accessibility Features</p>
-        </div>
-
-    </div>
+    </main>
 
     <footer>
         <p>© 2026 Group 3 | Fitness & Physiotherapy Exercise Planner</p>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="colorblind.js"></script>
+
+    <script>
+        fetch("navbar.html")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("navbar").innerHTML = data;
+                applyColorBlindMode();
+            });
+    </script>
 
 </body>
 
