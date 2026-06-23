@@ -70,7 +70,14 @@
                     <div class="card">
                         <div class="card-body">
 
-                            <h5>${ex.name}</h5>
+                            <h5>
+                                ${ex.name}
+
+                                ${ex.completed
+                                    ? '<span class="badge bg-success ms-2">Completed</span>'
+                                    : ''
+                                }
+                            </h5>
 
                             <p>
                                 Category:
@@ -81,12 +88,41 @@
                                 ${ex.reps} reps × ${ex.sets} sets
                             </p>
 
+                            ${!ex.completed ? `
+                                <button
+                                    class="btn btn-success"
+                                    onclick="markPlanCompleted(${ex.id})">
+
+                                    Complete
+
+                                </button>
+                            ` : ''}
+
                         </div>
                     </div>
                 `;
 
             });
 
+        }
+
+        function markPlanCompleted(id) {
+
+            const exercise = myPlan.find(
+                e => e.id === id
+            );
+
+            if (exercise) {
+
+                exercise.completed = true;
+
+                localStorage.setItem(
+                    "myPlan",
+                    JSON.stringify(myPlan)
+                );
+
+                location.reload();
+            }
         }
 
     </script>
@@ -102,6 +138,7 @@
                 applyColorBlindMode();
             });
     </script>
+
 </body>
 
 </html>
