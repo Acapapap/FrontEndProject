@@ -50,22 +50,16 @@
     <script src="plan.js"></script>
 
     <script>
-
         const container = document.getElementById("planContainer");
 
         if (myPlan.length === 0) {
-
             container.innerHTML = `
-                <div class="alert alert-warning">
+                <div class="alert alert-warning mt-4">
                     No exercises added yet.
                 </div>
             `;
-        }
-
-        else {
-
-            myPlan.forEach(ex => {
-
+        } else {
+            myPlan.forEach(function(ex) {
                 container.innerHTML += `
                     <div class="card">
                         <div class="card-body">
@@ -75,56 +69,52 @@
 
                                 ${ex.completed
                                     ? '<span class="badge bg-success ms-2">Completed</span>'
-                                    : ''
+                                    : '<span class="badge bg-warning text-dark ms-2">Pending</span>'
                                 }
                             </h5>
 
                             <p>
-                                Category:
-                                ${ex.category}
+                                Category: ${ex.category}
                             </p>
 
                             <p>
                                 ${ex.reps} reps × ${ex.sets} sets
                             </p>
 
+                            ${ex.completed && ex.dateCompleted ? `
+                                <p>
+                                    Date Completed: ${ex.dateCompleted}
+                                </p>
+                            ` : ''}
+
                             ${!ex.completed ? `
                                 <button
                                     class="btn btn-success"
                                     onclick="markPlanCompleted(${ex.id})">
-
                                     Complete
-
                                 </button>
                             ` : ''}
 
                         </div>
                     </div>
                 `;
-
             });
-
         }
 
         function markPlanCompleted(id) {
-
-            const exercise = myPlan.find(
-                e => e.id === id
-            );
+            const exercise = myPlan.find(function(ex) {
+                return ex.id === id;
+            });
 
             if (exercise) {
-
                 exercise.completed = true;
+                exercise.dateCompleted = new Date().toLocaleDateString("en-GB");
 
-                localStorage.setItem(
-                    "myPlan",
-                    JSON.stringify(myPlan)
-                );
+                localStorage.setItem("myPlan", JSON.stringify(myPlan));
 
                 location.reload();
             }
         }
-
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
