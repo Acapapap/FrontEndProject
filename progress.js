@@ -72,7 +72,7 @@ function showExerciseTable() {
         return;
     }
 
-    exerciseList.forEach(function(exercise, index) {
+    exerciseList.forEach(function(exercise) {
         const status = exercise.completed
             ? '<span class="badge bg-success">Completed</span>'
             : '<span class="badge bg-warning text-dark">Pending</span>';
@@ -88,6 +88,18 @@ function showExerciseTable() {
 }
 
 function resetProgress() {
+
+    if (exerciseList.length === 0) {
+        alert("Your plan is empty. Please add an exercise first.");
+        return;
+    }
+
+    const confirmReset = confirm("Are you sure you want to reset the progress?");
+
+    if (!confirmReset) {
+        return;
+    }
+
     exerciseList.forEach(function(exercise) {
         exercise.completed = false;
         exercise.dateCompleted = "";
@@ -95,6 +107,8 @@ function resetProgress() {
 
     saveProgress();
     loadProgress();
+
+    alert("Progress has been reset successfully!");
 }
 
 loadProgress();
